@@ -1,5 +1,5 @@
 <template>
-  <div class="home d-flex flex-column">
+  <div class="page home d-flex flex-column">
     <div class="section">
       <div class="portada">
       </div>
@@ -32,10 +32,10 @@
     <!-- Some Projects -->
     <div class="section some-projects text-primary mt-3 d-flex flex-column align-items-center py-5">
       <p class="display-5 text-center mb-4">Some projects</p>
-      <div class="d-flex flex-wrap justify-content-center gap-4">
-        <CardProjectVue v-for="project in projects" :key="project.title" :title="project.title" :img="project.img" :description="project.description"/>
+      <div v-if="new_list.length != 0" class="d-flex flex-wrap justify-content-center gap-4">
+        <CardProjectVue v-for="project in new_list" :key="project.title" :title="project.title" :img="project.img" :description="project.description" :url="project.url"/>
       </div>
-      <button class="btn btn-outline-primary mt-4">See more projects <i class="fas fa-arrow-right"></i> </button>
+      <router-link class="btn btn-outline-primary mt-4" to="/projects">See more projects <i class="fas fa-arrow-right"></i> </router-link>
     </div>
   </div>
 </template>
@@ -56,7 +56,8 @@ export default {
         'fa-bootstrap',
         'fa-figma',
         'fa-react',
-      ]
+      ],
+      new_list: []
     }
   },
   computed: {
@@ -64,8 +65,13 @@ export default {
   },
   components: {
     CardProjectVue,
-    CardProjectVue
-  }
+  },
+  async created() {
+    const num_random = await Math.floor((Math.random() * (this.projects.length - 2)) + 3)
+    for (let index = num_random; index > num_random-3; index--) {
+      this.new_list.push(this.projects[index]);
+    }
+  },
 }
 </script>
 <style>
