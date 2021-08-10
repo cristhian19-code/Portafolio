@@ -24,7 +24,7 @@ export default createStore({
         ]
       },
       {
-        url: 'https://cristhian19-code.github.io/TodosApp/',
+        url: 'https://cristhian19-code.github.io/TodosApp/#/',
         title: 'Todos App',
         img: 'https://res.cloudinary.com/christian99/image/upload/v1627887711/projects/todos_jdyier.png',
         description: 'Diseño reto de Frontend Mentor sobre una aplicacion de tareas con funcionalidades como agregar , eliminar y filtrar.',
