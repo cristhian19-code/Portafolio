@@ -13,13 +13,36 @@
     <!-- Experience -->
     <div class="section d-flex flex-wrap justify-content-center text-primary mt-3 py-5">
         <div class="col-12 col-md-7 fw-400 my-4 px-4">
-          <p class="display-5 text-center my-4">Experience</p>
-          <p>I have a little less than 2 years of development experience.
-            <ul>
-              <li>Frontend: Bootstrap, Tailwind CSS, Vuetify, Quasar, Bulma</li>
-              <li>Backend: Node.js, Java, Python, PHP.</li>
+          <p class="display-5 text-center my-4">Experiencia</p>
+          <p>Cuento con mas de 2 años de experiencia en desarrollo web
+            <ul class="d-flex justify-content-around">
+              <li>Frontend:
+                <ul>
+                  <li>React</li>
+                  <li>Vue</li>
+                  <li>Bootstrap</li>
+                  <li>HTML5</li>
+                  <li>CSS3</li>
+                  <li>PrimeVue</li>
+                  <li>Vuetify</li>
+                  <li>JavaScript</li>
+                </ul>
+              </li>
+              <li>Backend:
+                <ul>
+                  <li>Node.js</li>
+                  <li>PHP</li>
+                </ul>
+              </li>
+              <li>
+                Diseño UX/UI
+                <ul>
+                    <li>Adobe XD</li>
+                    <li>Figma</li>
+                </ul>
+              </li>
             </ul>
-            In addition to designing modern pages in Adobe XD and Figma</p>
+            </p>
             <div class="web-technologies d-flex gap-3 justify-content-center mt-4">
               <i v-for="icon in icons" :key="icon" class="fab" :class="icon"></i>
             </div>
@@ -31,11 +54,11 @@
 
     <!-- Some Projects -->
     <div class="section some-projects text-primary mt-3 d-flex flex-column align-items-center py-5">
-      <p class="display-5 text-center mb-4">Some projects</p>
+      <p class="display-5 text-center mb-4">Algunos Proyectos</p>
       <div v-if="new_list.length != 0" class="d-flex flex-wrap justify-content-center gap-4">
         <CardProjectVue v-for="project in new_list" :key="project.title" :title="project.title" :img="project.img" :description="project.description" :url="project.url"/>
       </div>
-      <router-link class="btn btn-outline-primary mt-4" to="/projects">See more projects <i class="fas fa-arrow-right"></i> </router-link>
+      <router-link class="btn btn-outline-primary mt-4" to="/projects">Ver todos mis proyectos <i class="fas fa-arrow-right"></i> </router-link>
     </div>
   </div>
 </template>
