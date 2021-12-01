@@ -90,10 +90,10 @@ export default {
     CardProjectVue,
   },
   async created() {
-    const num_random = await Math.floor((Math.random() * (this.projects.length - 2)) + 3)
-    for (let index = num_random; index > num_random-3; index--) {
-      this.new_list.push(this.projects[index]);
-    }
+    
+      this.new_list.push(this.projects[0]);
+      this.new_list.push(this.projects[1]);
+      this.new_list.push(this.projects[2]);
   },
 }
 </script>
