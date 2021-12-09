@@ -1,11 +1,11 @@
 <template>
   <div class="page projects py-5 d-flex flex-wrap justify-content-center gap-4">
     <CardProjectVue
-      v-for="(project, i) in projects"
+      v-for="project in projects"
       :key="project.title"
-      :index="i"
+      :index="project._id"
       :title="project.title"
-      :img="project.img"
+      :img="project.url_img"
       :description="project.description"
       :url="project.url"
     />
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapActions, mapState } from "vuex";
 import CardProjectVue from "../components/CardProject.vue";
 
 export default {
@@ -22,6 +22,12 @@ export default {
   },
   components: {
     CardProjectVue,
+  },
+  methods: {
+    ...mapActions(['getProjects'])
+  },
+  created() {
+    this.getProjects();
   },
 };
 </script>

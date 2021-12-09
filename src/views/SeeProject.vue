@@ -4,13 +4,13 @@
     class="see-project d-flex justify-content-center align-items-center p-4"
   >
     <div class="col-5 d-flex justify-content-center align-items-center">
-      <img class="shadow" :src="project.img" width="100%" height="300px" />
+      <img class="shadow" :src="project.url_img" width="100%" height="300px" />
     </div>
     <div class="col-7 px-3 align-self-start px-4">
       <h2>{{ project.title }}</h2>
       <p>{{ project.description }}</p>
       <div>
-        <p>Technologies used</p>
+        <h5>Tecnologias usadas:</h5>
         <div class="d-flex justify-content-center gap-2">
           <i
             v-for="icon in project.technologies"
@@ -21,33 +21,33 @@
         </div>
       </div>
       <div class="d-flex justify-content-center mt-3">
-        <button @click="ir(project.url)" class="btn btn-success">
+        <a target="_blank" :href="project.url" class="btn btn-success">
           Link <i class="fas fa-link"></i>
-        </button>
+        </a>
       </div>
+      
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapActions, mapState } from "vuex";
 export default {
   data() {
     return {
-      project: null,
+      project: {},
     };
   },
   methods: {
-    ir(url) {
-      window.location = url;
-    },
+    ...mapActions(['getProjects']),
   },
   computed: {
     ...mapState(["projects"]),
   },
-  created() {
-    const index = parseInt(this.$route.params.id);
-    const project = this.projects[index];
+  async created() {
+    await this.getProjects();
+    const id = this.$route.params.id;
+    const project = this.projects.find(project => project._id == id);
     this.project = project;
   },
 };

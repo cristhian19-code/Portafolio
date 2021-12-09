@@ -8,7 +8,7 @@
       </p>
       <div class="d-flex justify-content-around align-items-cente">
         <button class="btn btn-success">
-          See full <i class="fas fa-arrow-right"></i>
+          Ver mas <i class="fas fa-arrow-right"></i>
           <router-link :to="`/project/${index}`"> </router-link>
         </button>
         <button @click="ir(url)" class="btn btn-info">
@@ -48,6 +48,10 @@ export default {
 
 <style>
 @import url("../imagehover.css");
+button{
+  position: relative;
+}
+
 .imghvr-fade {
   border-radius: 5px;
 }

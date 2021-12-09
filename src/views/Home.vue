@@ -55,8 +55,8 @@
     <!-- Some Projects -->
     <div class="section some-projects text-primary mt-3 d-flex flex-column align-items-center py-5">
       <p class="display-5 text-center mb-4">Algunos Proyectos</p>
-      <div v-if="new_list.length != 0" class="d-flex flex-wrap justify-content-center gap-4">
-        <CardProjectVue v-for="project in new_list" :key="project.title" :title="project.title" :img="project.img" :description="project.description" :url="project.url"/>
+      <div v-if="new_list.length >0" class="d-flex flex-wrap justify-content-center gap-4">
+        <CardProjectVue v-for="project in new_list" :index="project._id" :key="project.title" :title="project.title" :img="project.url_img" :description="project.description" :url="project.url"/>
       </div>
       <router-link class="btn btn-outline-primary mt-4" to="/projects">Ver todos mis proyectos <i class="fas fa-arrow-right"></i> </router-link>
     </div>
@@ -65,7 +65,7 @@
 
 <script>
 import CardProjectVue from '../components/CardProject.vue'
-import {mapState} from 'vuex'
+import {mapActions, mapState} from 'vuex'
 
 export default {
   name: 'Home',
@@ -89,11 +89,14 @@ export default {
   components: {
     CardProjectVue,
   },
+  methods: {
+    ...mapActions(['getProjects'])
+  },
   async created() {
-    
+      await this.getProjects()
+      
       this.new_list.push(this.projects[0]);
       this.new_list.push(this.projects[1]);
-      this.new_list.push(this.projects[2]);
   },
 }
 </script>
